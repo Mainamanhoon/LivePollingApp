@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import socket from '../socket';
 import NameInput from '../components/NameInput';
 import QuestionCard from '../components/QuestionCard';
@@ -91,7 +91,7 @@ useEffect(() => {
     };
   }, []);
 
-  const submitAnswer = () => {
+  const submitAnswer = useCallback(() => {
     if (!selectedOption || !socket?.connected) return;
 
     console.log("📤 Emitting submit_answer:", {
@@ -105,7 +105,7 @@ useEffect(() => {
     });
 
     setShowResult(true);
-  };
+  }, [selectedOption, name]);
 
   useEffect(() => {
     if (!question || showResult) return;
