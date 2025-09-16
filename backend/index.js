@@ -157,7 +157,7 @@ app.get('/api/health', (req, res) => {
 
 // 🌐 Root path for Vercel
 app.get('/', (req, res) => {
-  res.send('✅ Polling server is running');
+  res.send(' Polling server is running');
 });
 
 // 🚀 Start server
