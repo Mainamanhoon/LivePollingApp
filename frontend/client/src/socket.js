@@ -1,11 +1,8 @@
 import { io } from 'socket.io-client';
 
-const socket = io('https://live-polling-ro1gcd8c7-amans-projects-c8708e7e.vercel.app', {
+const socket = io('https://your-render-backend-url.onrender.com', {
   withCredentials: true,
   autoConnect: true,
-  transports: ['polling'],
-  upgrade: false,
-  forceNew: true
 });
 
 // Optional: log connection status
