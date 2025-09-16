@@ -7,7 +7,7 @@ const app = express();
 
 // ✅ Proper CORS setup for credentials
 app.use(cors({
-  origin: ['https://intervue-poll-beta.vercel.app', 'https://live-polling-app-vecd.vercel.app'],
+  origin: ['https://intervue-poll-beta.vercel.app', 'https://live-polling-app-vecd.vercel.app', 'https://live-polling-ro1gcd8c7-amans-projects-c8708e7e.vercel.app'],
   credentials: true,
 }));
 
@@ -15,7 +15,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:3000', 'https://intervue-poll-beta.vercel.app', 'https://live-polling-app-vecd.vercel.app'],
+    origin: ['http://localhost:3000', 'https://intervue-poll-beta.vercel.app', 'https://live-polling-app-vecd.vercel.app', 'https://live-polling-ro1gcd8c7-amans-projects-c8708e7e.vercel.app'],
     methods: ['GET', 'POST'],
     credentials: true,
   }
