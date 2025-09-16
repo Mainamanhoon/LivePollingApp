@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import socket from '../socket';
 import NameInput from '../components/NameInput';
 import QuestionCard from '../components/QuestionCard';
@@ -49,11 +49,11 @@ function StudentPage() {
 }, [navigate]);
 
   useEffect(() => {
-    if (name && socket?.connected) {
-      socket.emit('join', name);
-      console.log('📨 Emitted join on socket connect (StudentPage):', name);
-    }
-  }, [name]);
+  if (name && socket?.connected) {
+    socket.emit('join', name);
+    console.log('📨 Emitted join on socket connect (StudentPage):', name);
+  }
+}, [name, socket]);
 
 useEffect(() => {
     socket.on('chat_message', (msg) => {
@@ -91,7 +91,7 @@ useEffect(() => {
     };
   }, []);
 
-  const submitAnswer = useCallback(() => {
+  const submitAnswer = () => {
     if (!selectedOption || !socket?.connected) return;
 
     console.log("📤 Emitting submit_answer:", {
@@ -105,7 +105,7 @@ useEffect(() => {
     });
 
     setShowResult(true);
-  }, [selectedOption, name]);
+  };
 
   useEffect(() => {
     if (!question || showResult) return;
@@ -122,7 +122,7 @@ useEffect(() => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [question, showResult, submitAnswer]);
+  }, [question, showResult]);
 
 
   const handleNameSubmit = () => {

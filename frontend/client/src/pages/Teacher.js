@@ -19,7 +19,7 @@ function TeacherPage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [participants, setParticipants] = useState([]);
-  const [teacherName] = useState(() => sessionStorage.getItem('teacherName') || 'Teacher');
+  const [teacherName, setTeacherName] = useState(() => sessionStorage.getItem('teacherName') || 'Teacher');
   const [canAskQuestion, setCanAskQuestion] = useState(true);
 
   const navigate = useNavigate();

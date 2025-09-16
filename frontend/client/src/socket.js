@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 
-const socket = io(process.env.REACT_APP_SOCKET_URL || '', {
+const socket = io('https://intervuepoll-2rn3.onrender.com', {
   withCredentials: true,
   autoConnect: true,
 });
