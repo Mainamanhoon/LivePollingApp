@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client';
 
-const socket = io('https://intervue-poll-beta.vercel.app', {
+const socket = io('https://live-polling-app-gamma.vercel.app', {
   withCredentials: true,
   autoConnect: true,
 });
