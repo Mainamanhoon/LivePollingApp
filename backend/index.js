@@ -18,7 +18,9 @@ const io = new Server(server, {
     origin: ['http://localhost:3000', 'https://live-polling-app-vecd.vercel.app'],
     methods: ['GET', 'POST'],
     credentials: true,
-  }
+  },
+  transports: ['websocket', 'polling'],
+  allowEIO3: true
 });
 
 
