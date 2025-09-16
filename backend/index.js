@@ -7,7 +7,7 @@ const app = express();
 
 // ✅ Proper CORS setup for credentials
 app.use(cors({
-  origin: 'https://intervue-poll-beta.vercel.app',
+  origin: true, // Allow all origins for monorepo setup
   credentials: true,
 }));
 
@@ -15,7 +15,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:3000', 'https://intervue-poll-beta.vercel.app'],
+    origin: true, // Allow all origins for monorepo setup
     methods: ['GET', 'POST'],
     credentials: true,
   }
@@ -147,6 +147,15 @@ io.on('connection', (socket) => {
 });
 
 // 🌐 Health check
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    message: '✅ Polling server is running',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// 🌐 Root path for Vercel
 app.get('/', (req, res) => {
   res.send('✅ Polling server is running');
 });

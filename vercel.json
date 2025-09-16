@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "buildCommand": "cd frontend/client && npm run build",
+  "outputDirectory": "frontend/client/build",
+  "builds": [
+    {
+      "src": "backend/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/index.js"
+    },
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "/backend/index.js"
+    },
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "functions": {
+    "backend/index.js": {
+      "maxDuration": 30
+    }
+  }
+}
