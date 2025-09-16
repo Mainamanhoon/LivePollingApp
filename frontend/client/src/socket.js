@@ -16,11 +16,24 @@ socket.on('disconnect', () => {
 
 socket.on('connect_error', (error) => {
   console.error('❌ Socket connection error:', error);
+  console.error('❌ Error details:', {
+    message: error.message,
+    description: error.description,
+    context: error.context,
+    type: error.type
+  });
 });
 
 // For devtools debugging
 if (typeof window !== 'undefined') {
   window.socket = socket;
+  
+  // Log initial connection status
+  console.log('🔍 Socket connection status:', {
+    connected: socket.connected,
+    id: socket.id,
+    url: socket.io.uri
+  });
 }
 
 export default socket;
