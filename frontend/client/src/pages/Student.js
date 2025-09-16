@@ -53,7 +53,7 @@ function StudentPage() {
     socket.emit('join', name);
     console.log('📨 Emitted join on socket connect (StudentPage):', name);
   }
-}, [name, socket]);
+}, [name]);
 
 useEffect(() => {
     socket.on('chat_message', (msg) => {
@@ -122,7 +122,7 @@ useEffect(() => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [question, showResult]);
+  }, [question, showResult, submitAnswer]);
 
 
   const handleNameSubmit = () => {
