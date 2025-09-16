@@ -25,10 +25,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "functions": {
-    "backend/index.js": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
