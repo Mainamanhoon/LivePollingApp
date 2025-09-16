@@ -49,11 +49,11 @@ function StudentPage() {
 }, [navigate]);
 
   useEffect(() => {
-  if (name && socket?.connected) {
-    socket.emit('join', name);
-    console.log('📨 Emitted join on socket connect (StudentPage):', name);
-  }
-}, [name, socket]);
+    if (name && socket?.connected) {
+      socket.emit('join', name);
+      console.log('📨 Emitted join on socket connect (StudentPage):', name);
+    }
+  }, [name, socket]);
 
 useEffect(() => {
     socket.on('chat_message', (msg) => {

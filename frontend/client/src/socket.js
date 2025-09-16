@@ -14,6 +14,10 @@ socket.on('disconnect', () => {
   console.log('🔌 Disconnected from backend');
 });
 
+socket.on('connect_error', (error) => {
+  console.error('❌ Socket connection error:', error);
+});
+
 // For devtools debugging
 if (typeof window !== 'undefined') {
   window.socket = socket;
